@@ -314,7 +314,7 @@ textreport frame "" {
 # A traditional Gantt chart with a project overview.
 taskreport plan_inicial "Initial project" {
   formats html
-  scenarios planinit
+  scenarios actual
   headline "Original Project Schedule"
   columns bsi, name, start, end, duration, chart
   timeformat "%Y-%m-%d"        # Consistent date format
