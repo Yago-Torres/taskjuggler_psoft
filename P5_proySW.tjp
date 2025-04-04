@@ -24,12 +24,8 @@ project pSix "Web Game"  2025-04-04 +4w {
   currency "EUR"
 
   # We want to compare the baseline scenario to one with the current one.
-  scenario inicial "Inicial" {
-    scenario planinit "Planinit"
-  }
-  scenario plan "Plan" {
-    scenario actual "Actual"
-  }
+  scenario planinit "Plan Inicial"
+  scenario actual "Plan Actual"
 }
 
 # This is not a real copyright for this file. It's just used as an example.
