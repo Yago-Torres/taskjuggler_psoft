@@ -102,7 +102,7 @@ task WMGame "Web & Mobile Game" {
     responsible dev1
     depends WMGame.tgdesign
     task tBEd "Back End General Design" {
-      journalentry 2025-04-04
+      journalentry 2025-04-05
       # The effort to finish this task is 5 man-days.
       effort 5d
       allocate dev_Yago
@@ -161,7 +161,7 @@ task WMGame "Web & Mobile Game" {
       effort 9d
       actual:effort 15d
       allocate dev3
-      journalentry 2025-03-15 "Problems with the GUI design tool" {
+      journalentry 2025-04-15 "Problems with the GUI design tool" {
         author dev3
         alert yellow
         summary "The tool used for the GUI design has given me a lot of problems. I recommend to look for other one."
