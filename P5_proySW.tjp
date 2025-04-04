@@ -103,7 +103,6 @@ task WMGame "Web & Mobile Game" {
     depends WMGame.tgdesign
     task tBEd "Back End General Design" {
       journalentry 2025-04-05
-      # The effort to finish this task is 5 man-days.
       effort 5d
       allocate dev_Yago
     }
