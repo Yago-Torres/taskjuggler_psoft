@@ -273,14 +273,7 @@ macro TaskTip [
     ->8-
 ]
 
-taskreport plan_inicial "Initial Project Plan" {
-  formats html
-  scenario plan                # Focus on the baseline scenario (no adjustments)
-  headline "Original Project Schedule"
-  columns bsi, name, start, end, duration, chart
-  timeformat "%Y-%m-%d"        # Consistent date format
-  hidereport @none             # Show all tasks
-}
+
 
 textreport frame "" {
   header -8<-
@@ -293,6 +286,7 @@ textreport frame "" {
     formats html
     center '<[report id="overview"]>'
   }
+  
   
   textreport "Status" {
     formats html
@@ -323,6 +317,18 @@ textreport frame "" {
     center '<[report id="resourceGraph"]>'
   }
 }
+
+# A traditional Gantt chart with a project overview.
+taskreport plan_inicial "Initial project" {
+  formats html
+  scenario Planificación Inicial                # Focus on the baseline scenario (no adjustments)
+  headline "Original Project Schedule"
+  columns bsi, name, start, end, duration, chart
+  timeformat "%Y-%m-%d"        # Consistent date format
+  hidereport @none             # Show all tasks
+
+}
+
 
 # A traditional Gantt chart with a project overview.
 taskreport overview "" {
