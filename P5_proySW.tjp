@@ -24,7 +24,7 @@ project pSix "Web Game"  2025-04-04 +4w {
   currency "EUR"
 
   # We want to compare the baseline scenario to one with the current one.
-  scenario inicial "Planificacion Inicial" {}
+  scenario inicial "Inicial" {}
   scenario plan "Plan" {
     scenario actual "Actual"
   }
