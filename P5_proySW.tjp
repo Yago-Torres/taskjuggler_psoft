@@ -102,9 +102,9 @@ task WMGame "Web & Mobile Game" {
     responsible dev1
     depends WMGame.tgdesign
     task tBEd "Back End General Design" {
-      journalentry 2025-04-05
       effort 5d
       allocate dev_Yago
+      journalentry 2025-04-05 "Design"
     }
     task tlogic "Game logic" {
       effort 12d
