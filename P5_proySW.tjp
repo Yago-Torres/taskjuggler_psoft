@@ -5,7 +5,7 @@
  * some elements of it
  */
 
-project pSix "Web Game"  2024-12-15 +5m {
+project pSix "Web Game" 2025-04-04 {
   # Set the default time zone for the project. If not specified, UTC
   # is used.
   timezone "Europe/Paris"
@@ -24,6 +24,7 @@ project pSix "Web Game"  2024-12-15 +5m {
   currency "EUR"
 
   # We want to compare the baseline scenario to one with the current one.
+  scenario plan "Planificación Inicial" # Escenario inicial para comparar luego con planactrual
   scenario plan "Plan" {
     scenario actual "Actual"
   }
@@ -68,6 +69,9 @@ resource dev2 "Samantha Müller" {
 resource dev3 "Peter Green" {
   email "kkk@unizar.es"
 }
+resource dev_Yago "Yago" {
+  limits { dailymax 4h }
+}
 
 # Now we specify the work packages. The whole project is described as
 # a task that contains subtasks. These subtasks are then broken down
@@ -98,14 +102,15 @@ task WMGame "Web & Mobile Game" {
     responsible dev1
     depends WMGame.tgdesign
     task tBEd "Back End General Design" {
+      journalentry 2025-04-04
       # The effort to finish this task is 5 man-days.
       effort 5d
-      allocate dev1
+      allocate dev_Yago
     }
     task tlogic "Game logic" {
       effort 12d
       actual:effort 11d
-      allocate dev1, dev2
+      allocate dev1, dev2, dev_Yago
       depends WMGame.tback.tBEd
       journalentry 2025-02-01 "Game logic completed before deadline" {
         author boss
@@ -174,8 +179,37 @@ task WMGame "Web & Mobile Game" {
     }    
   }
 
+   task tbackcloud "Back End Cloud Support" {
+    # It is necessary to “purge” the “chargeset” because it has been assigned previously to other variable 
+    purge chargeset
+    chargeset back
+    responsible dev1
+    task tBECloud "Back End Architecture design" {
+      # The effort to finish this task is 5 man-days.
+      effort 5d
+      allocate dev1
+    }
+    task tBackendDecision "Decide where to host on cloud" {
+      effort 4d
+      actual:effort 5d
+      allocate dev1
+      depends tback
+      journalentry 2025-02-01 "Decision made before " {
+        author boss
+        alert green
+        summary "The team has ended the game logic before deadline."
+      }
+    }
+    task tbackDev "Back development" {
+      effort 20d
+      allocate dev1, dev2
+      depends WMGame.tback.tlogic
+    }
+  }
+
 
   task ttest "Acceptance tests" {
+      start 2025-04-10
       effort 10d
       allocate boss
       allocate dev2
@@ -239,6 +273,15 @@ macro TaskTip [
     <-query attribute='followers'->
     ->8-
 ]
+
+taskreport plan_inicial "Initial Project Plan" {
+  formats html
+  scenario plan                # Focus on the baseline scenario (no adjustments)
+  headline "Original Project Schedule"
+  columns bsi, name, start, end, duration, chart
+  timeformat "%Y-%m-%d"        # Consistent date format
+  hidereport @none             # Show all tasks
+}
 
 textreport frame "" {
   header -8<-
