@@ -106,7 +106,6 @@ task WMGame "Web & Mobile Game" {
     }
     task tlogic "Game logic" {
       effort 12d
-      actual:effort 11d
       allocate dev1, dev2, dev_Yago
       depends WMGame.tback.tBEd
       journalentry 2025-05-01 "Game logic completed before deadline" {
@@ -129,7 +128,6 @@ task WMGame "Web & Mobile Game" {
     depends WMGame.tback.tBEd
     task tGUId "Web GUI Design" {
       effort 9d
-      actual:effort 15d
       allocate dev3
       journalentry 2025-05-01 "Problems with the GUI design tool" {
         author dev3
@@ -156,7 +154,6 @@ task WMGame "Web & Mobile Game" {
     depends WMGame.tback.tBEd
     task tGUId "Mobile GUI Design" {
       effort 9d
-      actual:effort 15d
       allocate dev3
       journalentry 2025-04-15 "Problems with the GUI design tool" {
         author dev3
@@ -188,7 +185,6 @@ task WMGame "Web & Mobile Game" {
     }
     task tBackendDecision "Decide where to host on cloud" {
       effort 4d
-      actual:effort 5d
       allocate dev1
       depends tback
       journalentry 2025-04-05 "Decision made before " {
