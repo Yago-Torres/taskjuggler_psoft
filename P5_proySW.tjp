@@ -206,7 +206,6 @@ task WMGame "Web & Mobile Game" {
       effort 10d
       allocate boss
       allocate dev2
-      actual:effort 20d
       depends WMGame.twebF
       depends WMGame.tback
       }
