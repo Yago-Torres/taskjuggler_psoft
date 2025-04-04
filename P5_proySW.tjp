@@ -24,7 +24,9 @@ project pSix "Web Game"  2025-04-04 +4w {
   currency "EUR"
 
   # We want to compare the baseline scenario to one with the current one.
-  scenario inicial "Inicial" {}
+  scenario inicial "Inicial" {
+    scenario planinit "Planinit"
+  }
   scenario plan "Plan" {
     scenario actual "Actual"
   }
@@ -321,7 +323,7 @@ textreport frame "" {
 # A traditional Gantt chart with a project overview.
 taskreport plan_inicial "Initial project" {
   formats html
-  scenarios inicial
+  scenarios planinit
   headline "Original Project Schedule"
   columns bsi, name, start, end, duration, chart
   timeformat "%Y-%m-%d"        # Consistent date format
