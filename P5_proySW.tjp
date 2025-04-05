@@ -341,9 +341,9 @@ taskreport overview "" {
 # Macro to set the background color of a cell according to the alert
 # level of the task.
 macro AlertColor [
-  cellcolor plan.alert = 0 "#00D000" # green
-  cellcolor plan.alert = 1 "#D0D000" # yellow
-  cellcolor plan.alert = 2 "#D00000" # red
+  cellcolor actual.alert = 0 "#00D000" # green
+  cellcolor actual.alert = 1 "#D0D000" # yellow
+  cellcolor actual.alert = 2 "#D00000" # red
 ]
 
 taskreport status "" {
@@ -356,35 +356,20 @@ taskreport status "" {
   scenarios actual
 
   taskreport dashboard "" {
-  headline "Project Dashboard (<-query attribute='now'->)"
-  columns name { 
-    title "Task" 
-    width 200
-    ${AlertColor} 
-  },
-  resources { 
-    width 200 
-    ${AlertColor}
-    listtype bullets
-    listitem "<-query attribute='name'->"
-    start ${projectstart} 
-    end ${projectend} 
-  },
-  alerttrend { 
-    title "Trend" 
-    ${AlertColor} 
-    width 50 
-  },
-  journal { 
-    width 350 
-    ${AlertColor} 
+    headline "Project Dashboard (<-query attribute='now'->)"
+    columns name { title "Task" ${AlertColor} width 200},
+            resources { width 200 ${AlertColor}
+                        listtype bullets
+                        listitem "<-query attribute='name'->"
+                        start ${projectstart} end ${projectend} },
+            alerttrend { title "Trend" ${AlertColor} width 50 },
+            journal { width 350 ${AlertColor} }
+    journalmode status_up
+    journalattributes headline, author, date, summary, details
+    hidetask ~hasalert(0)
+    sorttasks alert.down, actual.end.up
+    period %{${now} - 10w} +10w
   }
-  journalmode status_up
-  journalattributes headline, author, date, summary, details
-  hidetask ~hasalert(0)
-  sorttasks alert.down, actual.end.up
-  period %{${now} - 10w} +10w
-}
   taskreport completed "" {
     headline "Already completed tasks"
     hidetask ~(actual.end <= ${now})
