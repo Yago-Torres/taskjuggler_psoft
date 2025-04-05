@@ -417,5 +417,5 @@ resourcereport resourceGraph "" {
   loadunit shortauto
   # We only like to show leaf tasks for leaf resources.
   hidetask ~(isleaf() & isleaf_())
-  sorttasks plan.start.up
+  sorttasks actual.start.up
 }
