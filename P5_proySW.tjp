@@ -186,7 +186,7 @@ task WMGame "Web & Mobile Game" {
     task tBackendDecision "Decide where to host on cloud" {
       effort 4d
       allocate dev1
-      depends tback
+      depends WMGame.tback
       journalentry 2025-04-05 "Decision made before " {
         author boss
         alert green
