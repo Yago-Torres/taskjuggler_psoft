@@ -350,7 +350,7 @@ taskreport status "" {
   columns bsi { width 50 title 'WBS' }, name { width 150 },
           start { width 100 }, end { width 100 },
           effort { width 100 },
-          alert { tooltip planinit.journal
+          alert { tooltip actual.journal
                           != '' "<-query attribute='journal'->" width 150 },
           status { width 150 }
   scenarios actual
