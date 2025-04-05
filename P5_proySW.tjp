@@ -136,12 +136,12 @@ task WMGame "Web & Mobile Game" {
       }
     }
     task tFEc "Web Front End Construction" {
-      effort 15d
+      effort 4d
       allocate dev2, dev3
       depends WMGame.twebF.tGUId
     }
     task tFEt "Web Front End Test" {
-      effort 6d
+      effort 4d
       allocate dev1
       depends WMGame.twebF.tFEc
     }    
@@ -202,7 +202,7 @@ task WMGame "Web & Mobile Game" {
 
 
   task ttest "Acceptance tests" {
-      start 2025-04-10
+      start 2025-06-10
       effort 10d
       allocate boss
       allocate dev2
