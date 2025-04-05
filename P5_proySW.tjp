@@ -202,7 +202,7 @@ task WMGame "Web & Mobile Game" {
 
 
   task ttest "Acceptance tests" {
-      start 2025-06-10
+      start 2025-06-20
       effort 10d
       allocate boss
       allocate dev2
