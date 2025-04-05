@@ -153,16 +153,16 @@ task WMGame "Web & Mobile Game" {
     responsible dev3
     depends WMGame.tback.tBEd
     task tGUId "Mobile GUI Design" {
-      effort 9d
+      effort 5d
       allocate dev3
-      journalentry 2025-04-15 "Problems with the GUI design tool" {
+      journalentry 2025-04-05 "Problems with the GUI design tool" {
         author dev3
         alert yellow
         summary "The tool used for the GUI design has given me a lot of problems. I recommend to look for other one."
       }
     }
     task tFEc "Mobile Front End Construction" {
-      effort 15d
+      effort 5d
       allocate dev2, dev3
       depends WMGame.twebF.tGUId
     }
