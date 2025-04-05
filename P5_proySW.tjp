@@ -318,8 +318,6 @@ taskreport plan_inicial "Initial project" {
   headline "Original Project Schedule"
   columns bsi, name, start, end, duration, chart
   timeformat "%Y-%m-%d"        # Consistent date format
-  hidereport @none             # Show all tasks
-
 }
 
 
