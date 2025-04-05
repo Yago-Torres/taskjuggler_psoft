@@ -356,20 +356,35 @@ taskreport status "" {
   scenarios actual
 
   taskreport dashboard "" {
-    headline "Project Dashboard (<-query attribute='now'->)"
-    columns name { title "Task" ${AlertColor} width 200},
-            resources { width 200 ${AlertColor}
-                        listtype bullets
-                        listitem "<-query attribute='name'->"
-                        start ${projectstart} end ${projectend} },
-            alerttrend { title "Trend" ${AlertColor} width 50 },
-            journal { width 350 ${AlertColor} }
-    journalmode status_up
-    journalattributes headline, author, date, summary, details
-    hidetask ~hasalert(0)
-    sorttasks alert.down, actual.end.up
-    period %{${now} - 10w} +10w
+  headline "Project Dashboard (<-query attribute='now'->)"
+  columns name { 
+    title "Task" 
+    width 200
+    ${AlertColor} 
+  },
+  resources { 
+    width 200 
+    ${AlertColor}
+    listtype bullets
+    listitem "<-query attribute='name'->"
+    start ${projectstart} 
+    end ${projectend} 
+  },
+  alerttrend { 
+    title "Trend" 
+    ${AlertColor} 
+    width 50 
+  },
+  journal { 
+    width 350 
+    ${AlertColor} 
   }
+  journalmode status_up
+  journalattributes headline, author, date, summary, details
+  hidetask ~hasalert(0)
+  sorttasks alert.down, actual.end.up
+  period %{${now} - 10w} +10w
+}
   taskreport completed "" {
     headline "Already completed tasks"
     hidetask ~(actual.end <= ${now})
